@@ -42,7 +42,7 @@ const createBook = async(req, res) => {
 
 const getBookWithAuthor = async(req, res) => {
     try{
-        const book = new Book.findById(req.params.id).populate('author');
+        const book = await Book.findById(req.params.id).populate('author');
         if(!book){
             return res.status(404).json({
                 success: false,
